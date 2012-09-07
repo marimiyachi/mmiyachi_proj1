@@ -1,4 +1,8 @@
 MmiyachiProj1::Application.routes.draw do
+  resources :sites
+
+#  get "mmiyachi_proj1/sites"
+#root:to=>"mmiyachi_proj1#sites"
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
