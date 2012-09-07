@@ -17,11 +17,6 @@ class SitesController < ApplicationController
     @site = Site.new
   end
 
-  # GET /sites/1/edit
-  def edit
-    @site = Site.find(params[:id])
-  end
-
   # GET /sites/1/visit
   def visit
     @site = Site.find(params[:id])
