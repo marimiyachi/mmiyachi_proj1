@@ -4,14 +4,12 @@
   <tr>
     <th>Site</th>
     <th>Count</th>
-    <th></th>
   </tr>
 
 <% @sites.each do |site| %>
   <tr>
     <td><%= site.id %></td>
     <td><%= site.count %></td>
-    <td><%= link_to 'Show', site %></td>
   </tr>
 <% end %>
 </table>
