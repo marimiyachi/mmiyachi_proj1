@@ -5,4 +5,5 @@
 
 class Site < ActiveRecord::Base
   attr_accessible :count
+  has_many :pages
 end

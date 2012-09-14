@@ -6,6 +6,10 @@ class SitesController < ApplicationController
     @sites = Site.all
   end
 
+  def show
+    @site = Site.find(params[:id])
+  end
+
   # GET /sites/1/visit
   # Register visit to [id number] site
   def visit
