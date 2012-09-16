@@ -4,7 +4,8 @@ Proj1::Application.routes.draw do
   resources :users
 
   match 'users/:id/pages' => 'pages#user'
-  # The priority is based upon order of creation:
+  match ':controller/:action/:id'
+# The priority is based upon order of creation:
   # first created -> highest priority.
 
   # Sample of regular route:

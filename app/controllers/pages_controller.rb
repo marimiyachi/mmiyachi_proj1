@@ -17,8 +17,8 @@ class PagesController < ApplicationController
   # POST
   def view
     if @page = Page.find(params[:id])
-      @avg_time = @page.avg_time + params[:viewtime]
-      @new_time = @avg_time / @page.count
+      @avg_time = @page.avg_time + params[:viewtime].to_f
+      @new_time = @avg_time / @page.count.to_f
       @page.update_attributes(avg_time: @new_time)
     end
   end

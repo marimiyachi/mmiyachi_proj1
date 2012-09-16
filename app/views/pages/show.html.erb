@@ -1,10 +1,11 @@
 <script type='text/javascript'>
 var startTime = new Date();
-window.onbeforeunload = function() {
+window.onunload = function() {
   var endTime = new Date();
   var totalTime = endTime - startTime;
   var xhr = new XMLHttpRequest();
-  var url = <%= pages_path %> + '?viewtime=' + totalTime;
+  var page = <%= @page.id %>;
+  var url = 'localhost:3000/pages/view/' + page + '?viewtime=' + totalTime;
   xhr.open('GET', url, false);
   xhr.send('');
 }
@@ -24,4 +25,5 @@ window.onbeforeunload = function() {
 
 
 <%= link_to 'Edit', edit_page_path(@page) %> |
-<%= link_to 'Back', pages_path %>
+<%= link_to 'Back', pages_path %> |
+<%= link_to 'View Users', users_path %>
