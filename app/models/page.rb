@@ -1,4 +1,4 @@
 class Page < ActiveRecord::Base
-  attr_accessible :title, :visit_count
-  belongs_to :site
+  attr_accessible :count, :user_id
+  belongs_to :user
 end

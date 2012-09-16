@@ -1,8 +1,10 @@
-MmiyachiProj1::Application.routes.draw do
-  resources :sites
-match 'sites/:id/visit' => 'sites#visit'
+Proj1::Application.routes.draw do
+  resources :pages
 
-# The priority is based upon order of creation:
+  resources :users
+
+  match 'users/:id/pages' => 'pages#user'
+  # The priority is based upon order of creation:
   # first created -> highest priority.
 
   # Sample of regular route:
