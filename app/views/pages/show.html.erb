@@ -1,3 +1,15 @@
+<script type='text/javascript'>
+var startTime = new Date();
+window.onbeforeunload = function() {
+  var endTime = new Date();
+  var totalTime = endTime - startTime;
+  var xhr = new XMLHttpRequest();
+  var url = <%= pages_path %> + '?viewtime=' + totalTime;
+  xhr.open('GET', url, false);
+  xhr.send('');
+}
+</script>
+
 <p id="notice"><%= notice %></p>
 
 <p>

@@ -1,3 +1,7 @@
+Javascript snippet is in the deliverables directory.
+
+Heroku app: rocky-hollows-4060.herokuapp.com/users
+
 Project 1: Web Analytics
 ========================
 
