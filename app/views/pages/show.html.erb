@@ -5,7 +5,7 @@ window.onunload = function() {
   var totalTime = endTime - startTime;
   var xhr = new XMLHttpRequest();
   var page = <%= @page.id %>;
-  var url = 'localhost:3000/pages/view/' + page + '?viewtime=' + totalTime;
+  var url = 'rocky-hollows-4060.herokuapp.com/pages/view/' + page + '?viewtime=' + totalTime;
   xhr.open('GET', url, false);
   xhr.send('');
 }
