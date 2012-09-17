@@ -13,5 +13,5 @@ xhr.onreadystatechange = function() {
     console.log('We now have the complete response: ' + xhr.response);
   }
 }
-xhr.open('GET', 'rocky-hollows-4060.herokuapp.com/pages/1/show', true);
+xhr.open('GET', 'http://rocky-hollows-4060.herokuapp.com/pages/1/show', true);
 xhr.send('');
