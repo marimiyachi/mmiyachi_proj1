@@ -12,6 +12,9 @@ Proj1::Application.routes.draw do
   match 'pages/:id/view' => 'pages#resource_preflight', :constraints => { :method => 'OPTIONS' }
   match 'pages/:id/view' => 'pages#resource'
 
+  match 'pages/:id/show' => 'pages#resource_preflight', :constraints => { :method => 'OPTIONS' }
+  match 'pages/:id/show' => 'pages#resource'
+
 # The priority is based upon order of creation:
   # first created -> highest priority.
 

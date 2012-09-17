@@ -22,6 +22,7 @@ class PagesController < ApplicationController
   # GET /pages/1
   # GET /pages/1.json
   def show
+    set_cors_headers
     if @page = Page.find(params[:id])
       @viewcount = @page.count + 1
       @page.update_attributes(count: @viewcount)
