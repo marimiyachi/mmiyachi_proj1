@@ -4,7 +4,7 @@ window.onbeforeunload = function() {
   var endTime = new Date();
   var totalTime = endTime - window.startTime;
   var xhr = new XMLHttpRequest();
-  var url = 'http://localhost:3000/pages/' + <%= @page.id %> +'/view?viewtime=' + totalTime;
+  var url = 'http://rocky-hollows-4060.herokuapp.com/pages/' + <%= @page.id %> +'/view?viewtime=' + totalTime;
   xhr.open('GET', url, false);
   xhr.send('');
 }
