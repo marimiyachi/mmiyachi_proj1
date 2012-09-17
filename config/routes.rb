@@ -1,10 +1,17 @@
 Proj1::Application.routes.draw do
   resources :pages
-
   resources :users
 
   match 'users/:id/pages' => 'pages#user'
-  match ':controller/:action/:id'
+
+  # Allow for GET requests of form
+  # pages/1/view?viewtime=1200
+  match ':controller/:id/:action'
+
+  # Process OPTIONS requests with seperate action
+  match 'pages/:id/view' => 'pages#resource_preflight', :constraints => { :method => 'OPTIONS' }
+  match 'pages/:id/view' => 'pages#resource'
+
 # The priority is based upon order of creation:
   # first created -> highest priority.
 

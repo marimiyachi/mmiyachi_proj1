@@ -1,11 +1,10 @@
 <script type='text/javascript'>
-var startTime = new Date();
-window.onunload = function() {
+window.startTime = new Date();
+window.onbeforeunload = function() {
   var endTime = new Date();
-  var totalTime = endTime - startTime;
+  var totalTime = endTime - window.startTime;
   var xhr = new XMLHttpRequest();
-  var page = <%= @page.id %>;
-  var url = 'rocky-hollows-4060.herokuapp.com/pages/view/' + page + '?viewtime=' + totalTime;
+  var url = 'http://localhost:3000/pages/' + <%= @page.id %> +'/view?viewtime=' + totalTime;
   xhr.open('GET', url, false);
   xhr.send('');
 }
