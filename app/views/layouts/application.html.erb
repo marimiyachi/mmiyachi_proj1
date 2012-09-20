@@ -7,6 +7,32 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-   <%= yield %>
+  <header class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container">
+        <%= link_to "Analytics Engine", root_path, id: "name" %>
+        <nav>
+          <ul class="nav pull-right">
+            <li><%= link_to "Home", root_path %></li>
+            <li><%= link_to "Help", help_path %></li>
+            <li><%= link_to "Sign In", '#' %></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
+  <div class="container">
+    <%= yield %>
+    <footer class="footer">
+      <small>
+        Designed by
+        <a href="marimiyachi.com">Mari Miyachi</a>
+      </small>
+      <nav>
+        <ul>
+          <li><%= link_to "About", about_path %></li>
+        </ul>
+      </nav>
+  </div>
 </body>
 </html>
