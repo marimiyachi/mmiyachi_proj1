@@ -13,7 +13,7 @@ module SessionsHelper
     @current ||= User.find_by_token(cookies[:token])
   end
 
-  def current_user?(user)
+  def current?(user)
     user == current
   end
 
@@ -24,5 +24,11 @@ module SessionsHelper
   def sign_out
     self.current = nil
     cookies.delete(:token)
+  end
+
+  def signed_in_user
+    unless signed_in?
+      redirect_to signin_url, notice: "Please sign in."
+    end
   end
 end

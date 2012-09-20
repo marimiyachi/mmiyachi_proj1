@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_filter :signed_in_user, only: [:show, :index]
-#  before_filter :correct_user, only: [:show]
+  before_filter :correct_user, only: [:show]
 
 # GET /users
   # GET /users.json
@@ -91,6 +91,6 @@ class UsersController < ApplicationController
     end
 
     def correct_user
-      redirect_to root_path, notice: "Restricted access."  unless current_user?(@user)
+      redirect_to root_path, notice: "Restricted access."  unless current?(User.find(params[:id]))
     end
 end

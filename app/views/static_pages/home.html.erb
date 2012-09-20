@@ -1,8 +1,7 @@
 <% provide(:title, 'Home') %>
-<h1>This is the home page for Mari's Analytics Engine.</h1>
-<p>Find me in app/views/static_pages/home.html.erb</p>
-<% if signed_in? %>
-<%= link_to "Profile", current %>
-<% else %>
-<%= link_to "Sign up", signup_path %>
+<h1>Mari's Analytics Engine.</h1>
+<h2>
+<% if !signed_in? %>
+<%= link_to "Sign up", signup_path, class: "btn btn-large"%>
 <% end %>
+</h2>
