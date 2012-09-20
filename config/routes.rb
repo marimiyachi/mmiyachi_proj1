@@ -6,15 +6,15 @@ Proj1::Application.routes.draw do
   get "static_pages/help"
 
   match '/signup', to: 'users#new'
+  match '/signin', to: 'sessions#new'
+  match '/signout', to: 'sessions#destroy', via: :delete
 
-  match '/home', to: 'static_pages#home'
   match '/help', to: 'static_pages#help'
   match '/about', to: 'static_pages#about'
 
   resources :pages
   resources :users
-
-  match 'users/:id/pages' => 'pages#user'
+  resources :sessions
 
   # Allow for GET requests of form
   # pages/1/view?viewtime=1200

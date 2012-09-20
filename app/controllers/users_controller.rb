@@ -1,5 +1,8 @@
 class UsersController < ApplicationController
-  # GET /users
+  before_filter :signed_in_user, only: [:show]
+  before_filter :correct_user, only: [:show]
+
+# GET /users
   # GET /users.json
   def index
     @users = User.all
@@ -44,6 +47,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
+        sign_in @user
         format.html { redirect_to @user, notice: 'User was successfully created.' }
         format.json { render json: @user, status: :created, location: @user }
       else
@@ -80,4 +84,13 @@ class UsersController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  private
+    def signed_in_user
+      redirect_to signin_url, notice: "Please sign in." unless signed_in?
+    end
+
+    def correct_user
+      redirect_to(root_path) unless current?(@user)
+    end
 end
