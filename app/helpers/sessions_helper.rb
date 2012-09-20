@@ -13,7 +13,7 @@ module SessionsHelper
     @current ||= User.find_by_token(cookies[:token])
   end
 
-  def current?(user)
+  def current_user?(user)
     user == current
   end
 
