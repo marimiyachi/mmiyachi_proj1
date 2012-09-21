@@ -8,8 +8,19 @@
   </section>
   <div class="span8">
     <% if @user.pages.any? %>
-      <h3> Pages (<%= @user.pages.count %>)</h3>
-      <%= link_to 'View all pages', pages_path %>
+      <h3> Pages (<%= @user.pages.count %>)</h3><br/>
+      <table>
+        <tr>
+          <th>Page ID</th>
+          <th>View Count</th>
+          <th>Average Time</th>
+          <th></th>
+          <th></th>
+          <th></th>
+        </tr>
+        <%= render @pages %>
+      </table>
+      <%= link_to 'New Page', new_page_path %>
     <% end %>
   </div>
 </div>

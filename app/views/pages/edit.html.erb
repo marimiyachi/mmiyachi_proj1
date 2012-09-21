@@ -1,6 +1,23 @@
-<h1>Editing page</h1>
+<% provide(:title, "Javascript") %>
 
-<%= render 'form' %>
+<h1>Javascript Snippet</h1>
+
+<p>
+var xhr = new XMLHttpRequest(); <br/>
+xhr.onreadystatechange = function() { </br>
+  if (xhr.readyState == 1) { </br>
+    console.log('The call to open(...) succeeded.'); </br>
+  } if (xhr.readyState == 2) { <br/>
+    console.log('The call to send(...) succeeded. Waiting for response...'); <br/>
+  } if (xhr.readyState == 3 { <br/>
+    console.log('The response is coming in!'); <br/>
+  } if (xhr.readyState == 4) { <br/>
+    console.log('We now have the complete response: ' + xhr.response); <br/>
+  } <br/>
+}<br/>
+xhr.open('GET', '<%= root_url %>pages/<%= @page.id %>/show', true); <br/>
+xhr.send('');
+</p>
 
 <%= link_to 'Show', @page %> |
-<%= link_to 'Back', pages_path %>
+<%= link_to 'Back', current %>
