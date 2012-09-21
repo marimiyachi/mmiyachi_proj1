@@ -12,13 +12,14 @@ class PagesController < ApplicationController
     @pages = Page.all
   end
 
-  # POST pages/1/view?viewtime=1
+  # POST pages/1/view?viewtime=1&city=Cambridge&country=US
   def view
     set_cors_headers
     if @page = Page.find(params[:id])
+      @city = params[:city].to_s + ', ' + params[:country]
       @avg_time = @page.avg_time + params[:viewtime].to_f
       @new_time = @avg_time / @page.count.to_f
-      @page.update_attributes(avg_time: @new_time)
+      @page.update_attributes(avg_time: @new_time, geo: @city)
     end
   end
 
@@ -47,6 +48,7 @@ class PagesController < ApplicationController
   # POST /pages.json
   def create
     @page = current.pages.build(params[:page])
+    @page.update_attributes(count: 0, avg_time: 1, geo: 'None')
 
     respond_to do |format|
       if @page.save
@@ -70,6 +72,9 @@ class PagesController < ApplicationController
   def destroy
     @page = Page.find(params[:id])
     @page.destroy
+    respond_to do |format|
+      format.html { render action: "new" }
+    end
   end
 
   # OPTIONS

@@ -1,12 +1,15 @@
 <% provide(:title, 'View Page') %>
 
+<script language="JavaScript" src="http://www.geoplugin.net/javascript.gp" type="text/javascript"></script>
 <script type='text/javascript'>
 window.startTime = new Date();
 window.onbeforeunload = function() {
+  var city = geoplugin_city();
+  var country = geoplugin_countryCode();
   var endTime = new Date();
   var totalTime = endTime - window.startTime;
   var xhr = new XMLHttpRequest();
-  var url = 'http://localhost:3000/pages/' + <%= @page.id %> +'/view?viewtime=' + totalTime;
+  var url = 'http://localhost:3000/pages/' + <%= @page.id %> +'/view?viewtime=' + totalTime + '&city=' + city + '&country=' + country;
   xhr.open('GET', url, false);
   xhr.send('');
 }
