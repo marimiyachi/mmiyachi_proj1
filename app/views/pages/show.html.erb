@@ -13,8 +13,8 @@ window.onbeforeunload = function() {
   var view_count = <%= @page.count %>;
   var totalTime = endTime - window.startTime;
   var xhr = new XMLHttpRequest();
-  var url = 'http://localhost:3000/pages/' + <%= @page.id %> +'/view?viewtime=' + totalTime + '&city=' + city + '&country=' + country;
-  var url_graph = 'http://localhost:3000/graphs?date=' + month + day + '&page_id=' + page_id + '&view_count=' + view_count;
+  var url = 'http://rocky-hollows-4060.herokuapp.com/pages/' + <%= @page.id %> +'/view?viewtime=' + totalTime + '&city=' + city + '&country=' + country;
+  var url_graph = 'http://rocky-hollows-4060.herokuapp.com/graphs?date=' + month + day + '&page_id=' + page_id + '&view_count=' + view_count;
   xhr.open('GET', url, false);
   xhr.send('');
   xhr.open('GET', url_graph, false);
