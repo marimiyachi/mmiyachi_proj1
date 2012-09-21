@@ -4,6 +4,7 @@ Proj1::Application.routes.draw do
   get "static_pages/home"
   get "static_pages/about"
   get "static_pages/help"
+  get "static_pages/javascript"
 
   match '/signup', to: 'users#new'
   match '/signin', to: 'sessions#new'
@@ -15,10 +16,13 @@ Proj1::Application.routes.draw do
   resources :pages
   resources :users
   resources :sessions
+  resources :graphs
 
   # Allow for GET requests of form
   # pages/1/view?viewtime=1200
   match ':controller/:id/:action'
+  match 'static_pages/javascript.js' => 'static_pages#javascript'
+  match 'pages/javascript.js', to: 'static_pages#javascript'
 
   # Process OPTIONS requests with seperate action
   match 'pages/:id/view' => 'pages#resource_preflight', :constraints => { :method => 'OPTIONS' }

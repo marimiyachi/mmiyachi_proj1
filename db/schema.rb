@@ -11,7 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120921163624) do
+ActiveRecord::Schema.define(:version => 20120921182608) do
+
+  create_table "graphs", :force => true do |t|
+    t.integer  "page_id"
+    t.integer  "date"
+    t.integer  "view_count"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "pages", :force => true do |t|
     t.integer  "user_id"

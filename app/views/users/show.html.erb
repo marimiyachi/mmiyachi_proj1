@@ -9,13 +9,12 @@
   <div class="span8">
     <% if @user.pages.any? %>
       <h3> Pages (<%= @user.pages.count %>)</h3><br/>
-      <table>
+      <table class="table table-striped table-bordered">
         <tr>
           <th>Page ID</th>
           <th>View Count</th>
           <th>Average Time</th>
           <th>Most Recent Visit Origin</th>
-          <th></th>
           <th></th>
           <th></th>
         </tr>

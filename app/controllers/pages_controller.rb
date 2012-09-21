@@ -16,6 +16,7 @@ class PagesController < ApplicationController
   def view
     set_cors_headers
     if @page = Page.find(params[:id])
+      @date = params[:month].to_i*1000 + params[:day].to_i
       @city = params[:city].to_s + ', ' + params[:country]
       @avg_time = @page.avg_time + params[:viewtime].to_f
       @new_time = @avg_time / @page.count.to_f
@@ -28,6 +29,7 @@ class PagesController < ApplicationController
   def show
     set_cors_headers
     if @page = Page.find(params[:id])
+      @graphs = @page.graphs
       @viewcount = @page.count + 1
       @page.update_attributes(count: @viewcount)
     end

@@ -7,25 +7,95 @@ window.onbeforeunload = function() {
   var city = geoplugin_city();
   var country = geoplugin_countryCode();
   var endTime = new Date();
+  var month = endTime.getMonth();
+  var day = endTime.getDate();
+  var page_id = <%= @page.id %>;
+  var view_count = <%= @page.count %>;
   var totalTime = endTime - window.startTime;
   var xhr = new XMLHttpRequest();
   var url = 'http://localhost:3000/pages/' + <%= @page.id %> +'/view?viewtime=' + totalTime + '&city=' + city + '&country=' + country;
+  var url_graph = 'http://localhost:3000/graphs?date=' + month + day + '&page_id=' + page_id + '&view_count=' + view_count;
   xhr.open('GET', url, false);
+  xhr.send('');
+  xhr.open('GET', url_graph, false);
   xhr.send('');
 }
 </script>
 
+<script type='text/javascript'>
+  (function($) {
+   $(function() {
+     $(document).ready(function() {
+       Highcharts.visualize = function(table, options) {
+        options.xAxis.categories = [];
+        $('tbody th', table).each( function(i) {
+          options.xAxis.categories.push(this.innerHTML);
+        });
+
+        options.series = [];
+        $('tr', table).each( function(i) {
+          var tr = this;
+          $('th, td', tr).each( function(j) {
+            if (j>0) {
+              if (i == 0) {
+                options.series[j-1] = {
+                  name: this.innerHTML, data: []
+                };
+              } else {
+                options.series[j-1].data.push(parseFloat(this.innerHTML));
+              }
+            }
+          });
+        });
+        var chart = new Highcharts.Chart(options);
+      }
+      var table = document.getElementById('datatable'),
+      options = {
+        chart: {
+          renderTo: 'container', type: 'column'},
+          title: {text: 'View Counts per Day'},
+          xAxis: {},
+          yAxis: { title: { text: 'View Counts' }},
+          tooltip: { formatter: function() { return '<b>'+this.series.name+'</b><br/>'+this.y+' '+this.x.toLowerCase();
+          }
+        }
+      }
+      Highcharts.visualize(table, options);
+    });
+  });
+  })(jQuery);
+</script>
+
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>User:</b>
-  <%= @page.user_id %>
-</p>
+<h3> Your visit to this page will be logged </h3><br/>
 
+<div class="span8">
+  <div id="container"></div>
+  <% if @page.graphs.any? %>
+    <table id="datatable" class="table table-striped table-bordered table-condensed">
+      <tr>
+        <th>Date (Month/Day)</th>
+        <th>View Count</th>
+      </tr>
+      <%= render @graphs %>
+    </table>
+  <% end %>
+</div>
+
+<div class="span3">
 <p>
   <b>Count:</b>
   <%= @page.count %>
 </p>
 
+<p>
+  <b>Average Time:</b>
+  <%= @page.avg_time %>
+</p>
 
+
+<%= link_to 'Javascript', edit_page_path %> |
 <%= link_to 'Back', current %> 
+</div>
+<br/><br/>
