@@ -13,8 +13,8 @@ window.onbeforeunload = function() {
   var view_count = <%= @page.count %>;
   var totalTime = endTime - window.startTime;
   var xhr = new XMLHttpRequest();
-  var url = 'http://aqueous-crag-8090.herokuapp.com/pages/' + <%= @page.id %> +'/view?viewtime=' + totalTime + '&city=' + city + '&country=' + country;
-  var url_graph = 'http://aqueous-crag-8090.herokuapp.com/graphs?date=' + month + day + '&page_id=' + page_id + '&view_count=' + view_count;
+  var url = 'http://localhost:3000/pages/' + <%= @page.id %> +'/view?viewtime=' + totalTime + '&city=' + city + '&country=' + country;
+  var url_graph = 'http://localhost:3000/graphs?date=' + month + day + '&page_id=' + page_id + '&view_count=' + view_count;
   xhr.open('GET', url, false);
   xhr.send('');
   xhr.open('GET', url_graph, false);
@@ -25,9 +25,8 @@ window.onbeforeunload = function() {
 
 <p id="notice"><%= notice %></p>
 
-<h3> Your visit to this page will be logged </h3><br/>
-
 <div class="span8">
+  <h3> Your visit to this page will be logged </h3><br/>
   <% if @page.graphs.any? %>
     <table id="datatable" class="table table-striped table-bordered table-condensed">
       <tr>
