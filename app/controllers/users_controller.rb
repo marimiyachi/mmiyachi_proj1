@@ -87,6 +87,7 @@ class UsersController < ApplicationController
   end
 
   # Authenticate users
+  # Code from ruby.railstutorial.org
   private
     def signed_in_user
       redirect_to signin_url, notice: "Please sign in." unless signed_in?
