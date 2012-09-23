@@ -1,0 +1,8 @@
+<tr>
+  <td><%= page.id %></td>
+  <td><%= page.count %></td>
+  <td><%= page.avg_time %></td>
+  <td><%= page.geo %></td>
+  <td><%= link_to "More Details", page %></td>
+  <td><%= link_to "Destroy", page, method: :delete, data: {confirm: "Are you sure?"} %></td>
+</tr>
