@@ -1,5 +1,7 @@
 module SessionsHelper
 
+# Code from ruby.railstutorial.org
+
   def sign_in(user)
     cookies.permanent[:token] = user.token
     self.current = user

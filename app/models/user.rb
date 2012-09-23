@@ -1,3 +1,11 @@
+# DB Information
+# Table name: Users
+# Each entry contains:
+#   id : integer, unique
+#   name : string, unique
+#   password : string
+#   password_confirmation : string
+
 class User < ActiveRecord::Base
   attr_accessible :name, :password, :password_confirmation
   has_secure_password

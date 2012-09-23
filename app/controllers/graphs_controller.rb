@@ -7,8 +7,10 @@ class GraphsController < ApplicationController
     @page_id = params[:page_id]
     @count = params[:view_count]
     if Graph.find_by_page_id_and_date(@page_id, @date_input)
+      # if graph for page and date exists, just updated the count
       Graph.find_by_page_id_and_date(@page_id, @date_input).update_attributes(view_count: @count)
     else
+      # otherwise, create a new graph object
       @graph = Graph.new()
       @graph.update_attributes(page_id: @page_id, date: @date_input, view_count: @count)
     end

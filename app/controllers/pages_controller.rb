@@ -1,14 +1,8 @@
 class PagesController < ApplicationController
-  before_filter :signed_in_user, only: [:create]
-#  before_filter :correct_user, only: :show
 
-# GET /pages
+  # GET /pages
   # GET /pages.json
   def index
-    @pages = Page.all
-  end
-
-  def user
     @pages = Page.all
   end
 
@@ -97,9 +91,4 @@ class PagesController < ApplicationController
     render :text => 'OK here is your restricted resource!'
   end
 
-  private
-    def correct_user
-      @page = current.page.find_by_id(params[:id])
-      redirect_to root_url if @page.nil?
-    end
 end
