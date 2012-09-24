@@ -1,5 +1,7 @@
 Heroku app: aqueous-crag-8090.herokuapp.com/users
 
+Features: visit count, average visit duration, location of last visitor, visit counts per day, user authentication
+
 Project 1: Web Analytics
 ========================
 
